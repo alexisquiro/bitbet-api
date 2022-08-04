@@ -2,14 +2,16 @@ const pool=require('../../database/database.js');
 
 
 const getGames=async  (req,res)=>{
-    const response= await pool.query('SELECT * FROM  Usuario');
+    const response= await pool.query('SELECT * FROM Games ');
         res.json(response.rows);
 
  };
 
 const createGame=async(req,res)=>{
-        const {name,email,password }=req.body;                        
-        const response= await pool.query(`INSERT INTO public.usuario(nombre_usuario, email, pass)VALUES (${name},${email},${email})`);                     
+        const {team1,team2,game_date,winner}=req.body;                        
+        const response= await pool.query(`INSERT INTO public.game(
+            team1, team2, game_date, winner)
+            VALUES (${team1},${team2},${game_date}, null);`);                     
         console.log();   
         res.send(response.rows);                    
 }
