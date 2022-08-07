@@ -1,7 +1,7 @@
 CREATE TABLE Usuario(
     id_user SERIAL PRIMARY KEY,
-    nombre_usuario VARCHAR(30) NOT NULL,
-	email VARCHAR(50) NOT NULL,
+    nombre_usuario VARCHAR(30) UNIQUE NOT NULL,
+	email VARCHAR(50) UNIQUE NOT NULL,
 	pass VARCHAR(100) NOT NULL
 );
 CREATE TABLE Game(
@@ -11,7 +11,7 @@ CREATE TABLE Game(
 	game_date date NOT NULL,
 	winner integer default NULL
 );
-CREATE TABLE TIcket_Bet(
+CREATE TABLE Ticket_Bet(
     id_ticket SERIAL PRIMARY KEY,
 	id_user INTEGER NOT NULL,
     id_game integer NOT NULL,
