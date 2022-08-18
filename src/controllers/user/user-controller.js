@@ -41,5 +41,6 @@ if (response.length > 0) {
 module.exports={
     getUsers,
     createUser,
-    updateUser
+    updateUser,
+    authLogin
 }

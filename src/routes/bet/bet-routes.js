@@ -9,8 +9,6 @@ router.post('/api/createTicketBet/',createTicketBet);
 router.get('/api/getTicketBetGame/',getTicketBetGame);
 router.get('/api/transHis/',getTrans);
 
-//Login 
-//router.post('/api/logIn/',logIn);
 
 
 
