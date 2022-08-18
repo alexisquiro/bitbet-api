@@ -28,6 +28,7 @@ app.use(function(req, res, next) {
 //routes 
 
 app.use(require('./routes/user/user-routes'));
+app.use(require('./routes/bet/bet-routes'))
 
 
 

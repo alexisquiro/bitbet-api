@@ -1,11 +1,28 @@
 const pool=require('../../database/database.js');
+const Binance = require('binance-api-node').default
 
+const api_binance ="tItrNWd7lnFflfZ1x2knUHpiOczypID7QxBanFATkmAy2qH5vhwwP9qUPKIwC6MT";
+const api_private= "OorKgPbwd1TonWmo31mxSNwQXVV3ycPJaUA1iN0AUrj6A65y9X0dKAw8TINZWD7o";
+
+const binance = Binance({
+	apiKey: api_binance,
+	apiSecret: api_private,
+  })
 
 const getTicketBet=async  (req,res)=>{
     const response= await pool.query('SELECT * FROM Bet ');
         res.json(response.rows);
 
  };
+
+
+ const getTrans=async  (req,res)=>{
+    //const response= await pool.query('SELECT * FROM Bet ');
+    res.json (await binance.withdrawHistory());
+
+
+ };
+
 
 
  const getTicketBetGame=async  (req,res)=>{
@@ -24,17 +41,14 @@ const createTicketBet=async(req,res)=>{
         res.send(response.rows);                    
 }
 
+ 
 
-const updateGame=async(req,res)=>{
-    const {name,email}=req.body;  
-    const id=req.params.id;
-const response= await pool.query();                           
-}
 
 
 
 module.exports={
-    getGames,
-    createGame,
-    updateGame
+    createTicketBet,
+    getTicketBetGame,
+    getTicketBet,
+    getTrans
 }
