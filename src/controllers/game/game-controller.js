@@ -7,6 +7,16 @@ const getGames=async  (req,res)=>{
 
  };
 
+
+
+
+ const getGamesId=async  (req,res)=>{
+    const {id_game}=req.body;      
+    const response= await pool.query(`SELECT * FROM Games WHERE id_game = ${id_game}`);
+        res.json(response.rows);
+
+ };
+
 const createGame=async(req,res)=>{
         const {team1,team2,game_date,winner}=req.body;                        
         const response= await pool.query(`INSERT INTO public.game(
@@ -28,5 +38,6 @@ const response= await pool.query();
 module.exports={
     getGames,
     createGame,
+    getGamesId,
     updateGame
 }

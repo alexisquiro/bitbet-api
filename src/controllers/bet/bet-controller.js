@@ -32,6 +32,15 @@ const getTicketBet=async  (req,res)=>{
 
  };
 
+
+ const getTicketBetUser=async  (req,res)=>{
+    const {id_game}= req.body;
+    const response= await pool.query(`SELECT * FROM Bet Where id_user= ${id_user} `);
+        res.json(response.rows);
+
+ };
+
+
 const createTicketBet=async(req,res)=>{
         const {id_user, id_game, team, email_pay, hash_pay, amount, confirm}=req.body;                        
         const response= await pool.query(`INSERT INTO public.ticket_bet(
@@ -50,5 +59,6 @@ module.exports={
     createTicketBet,
     getTicketBetGame,
     getTicketBet,
+    getTicketBetUser,
     getTrans
 }
